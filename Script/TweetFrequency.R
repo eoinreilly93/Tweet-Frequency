@@ -1,5 +1,9 @@
+#################################
+# DATA PREPARATION
+#################################
+
 #READ IN THE DATA IF IT IS STORED ON YOUR LOCAL MACHINE
-tweets <- read.csv("C:\\Users\\eoind\\Documents\\R\\Tump Analysis\\TrumpTweets_31_01_2017.csv", header = T, sep = ",")
+tweetsdf <- read.csv("Resources/Datasets/DonaldTrumpTweets18_03_17.csv", header = T, sep = ",")
 
 #FORMAT FEATURES 
 Time <- format(as.POSIXct(strptime(tweetsdf$created,"%Y-%m-%d %H:%M:%S",tz="")) ,format = "%H:%M:%S")
@@ -8,15 +12,15 @@ Date <- format(as.POSIXct(strptime(tweetsdf$created,"%Y-%m-%d %H:%M:%S",tz="")) 
 tweetsdf$TweetDate <- as.POSIXct(Date)
 tweetsdf$TweetTime <- as.POSIXct(Time, format = "%H:%M:%S")
 
-#WRITE TO FILE
-write.csv(tweetsdf, "C:\\Users\\eoind\\Documents\\R\\Tump Analysis\\TrumpTweets_02_02_2017.csv")
+##############################
+# ANALYSIS
+###############################
 
 #REFINE DATA TO ONLY NECESSARY COLUMNS
 refinedDF <- tweetsdf[c(5,20,21)]
 
 #SUBSET BY DATE IF YOU WISH
 JanTweets <- subset(refinedDF, refinedDF$TweetDate >= "2017-01-01" & refinedDF$TweetDate <= "2017-01-31")
-
 
 #LIMITS TO TRY AND SCALE THE Y-AXIS TO START AT 00:00 AND END AT 00:00
 #DOES NOT WORK ATM
