@@ -37,7 +37,7 @@ ggplot(refinedDF, aes(x=TweetDate, y=TweetTime)) +
   theme(axis.text.x=element_text(angle=360)) +
   theme(plot.title = element_text(family = "Trebuchet MS", color="#000000", face="bold", size=18, hjust=0.5)) +
   theme(axis.title = element_text(family = "Trebuchet MS", color="#302e2e", face="bold", size=12)) + 
-  ggtitle("Tweet Fquency Over Time") +
+  ggtitle("Tweet Frequency Over Time") +
   labs(x="Tweet Date",y="Tweet Time")
 
 
